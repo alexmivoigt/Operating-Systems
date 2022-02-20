@@ -17,18 +17,19 @@ int main()
         execl(childA, childA, null);
     } else {
         child_b = fork(); //fork Parent to Child B
+        
+        if(child_b == 0) { //execute Child B code
+            execl(childB, childB, null);
+        } else { //wait for children to finish
+            int status;
+            pid_t pid;
+            
+            for (int i = 0; i < 2; i++) {
+                pid = wait(&status);
+                printf("Child terminated\n");
+            }
+        }
     }
     
-    if(child_b == 0) { //execute Child B code
-        execl(childB, childB, null);
-    } else { //wait for children to finish
-        int status;
-        pid_t pid;
-            
-        for (int i = 0; i < 2; i++) {
-            pid = wait(&status);
-            printf("Child terminated\n");
-        }
-        return(0);
-    }
+    return(0);
 }
