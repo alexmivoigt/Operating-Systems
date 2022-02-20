@@ -28,8 +28,9 @@ int main()
                 pid = wait(&status);
                 printf("Child terminated\n");
             }
+            
+            printf("Both children terminated, ending program\n");
+            return(0);
         }
     }
-    
-    return(0);
 }
