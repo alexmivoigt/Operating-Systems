@@ -14,13 +14,13 @@ int main()
     child_a = fork(); //fork Parent to Child A
     
     if (child_a == 0) { //execute Child A code
-        execl(childA, childA, null);
+        execl("childA", "childA", NULL);
         exit(0);
     } else {
         child_b = fork(); //fork Parent to Child B
         
         if(child_b == 0) { //execute Child B code
-            execl(childB, childB, null);
+            execl("childB", "childB", NULL);
             exit(0);
         } else { //wait for children to finish
             int status;
