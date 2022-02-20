@@ -15,11 +15,13 @@ int main()
     
     if (child_a == 0) { //execute Child A code
         execl(childA, childA, null);
+        exit(0);
     } else {
         child_b = fork(); //fork Parent to Child B
         
         if(child_b == 0) { //execute Child B code
             execl(childB, childB, null);
+            exit(0);
         } else { //wait for children to finish
             int status;
             pid_t pid;
